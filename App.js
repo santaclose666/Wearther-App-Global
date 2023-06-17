@@ -30,8 +30,8 @@ function App() {
   const apiKey = '1e52cb7b5a93a86d54181d1fa5724454';
 
   const fetchDataHandler = useCallback(async () => {
-    if(input.length <= 2){
-      return Alert.alert("Enter at least 3 characters")
+    if(input.length < 2){
+      return Alert.alert("Enter at least 2 characters")
     }
 
     setLoading(true);
@@ -44,6 +44,7 @@ function App() {
       setData(res.data);
     }).catch(() => {
       setToggleErr(true)
+      setData(false)
     });
 
     setLoading(false);
